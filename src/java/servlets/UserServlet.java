@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.Role;
 import models.User;
 import services.UserService;
@@ -86,6 +87,7 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        HttpSession session = request.getSession();
         UserService us = new UserService();
 
         String action = request.getParameter("action");
@@ -139,10 +141,6 @@ public class UserServlet extends HttpServlet {
                         request.setAttribute("invalidPassMsg", "<span style=\"color: crimson; font-style: italic; font-weight: 500; font-size: 13px;\">Incorrect password. Please try again.</span><br>");
                     }
                     request.setAttribute("numUsers", "");
-                    
-                    break;
-                case "delete":
-                    us.delete(email);
             }
         }
         catch (Exception ex) {

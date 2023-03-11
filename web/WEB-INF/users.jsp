@@ -82,12 +82,10 @@
                     <td class="noborder-r">${user.lastName}</td>
                     <td class="noborder-r">${user.role.getRoleName()}</td>
                     <td class="noborder-r">
-                        <input type="hidden" name="action" value="edit">
-                        <a href="user?email=${user.email}&action=edit" class='bold500' name="edit" style="color: blue; text-decoration: none;">Edit</a>
+                        <a href="<c:url value='/user?action=edit'><c:param name="email" value="${user.email}"></c:param></c:url>" class='bold500' name="delete" style="color: blue; text-decoration: none;">Edit</a>
                     </td>
                     <td class="noborder-r">
-                        <input type="hidden" name="action" value="delete">
-                        <a href="user?email=${user.email}&action=delete" class='bold500' name="delete" style="color: blue; text-decoration: none;">Delete</a>
+                        <a href="<c:url value='/user?action=delete'><c:param name="email" value="${user.email}"></c:param></c:url>" class='bold500' name="delete" style="color: blue; text-decoration: none;">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
